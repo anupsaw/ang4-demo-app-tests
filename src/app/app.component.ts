@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  counter: number;
+  constructor() {
+    this.counter = 0;
+  }
+
+  upCounter() {
+    this.counter++;
+  }
+  downCounter() {
+    this.counter--;
+  }
 }
