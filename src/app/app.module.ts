@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
+import { DataServiceService } from './services/data-service.service';
 import { AppComponent } from './app.component';
 import { HighlightDirectiveDirective } from './directives/highlight-directive.directive';
 
@@ -10,9 +12,10 @@ import { HighlightDirectiveDirective } from './directives/highlight-directive.di
     HighlightDirectiveDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
