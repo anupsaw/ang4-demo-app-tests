@@ -4,6 +4,25 @@ const gulp = require('gulp'),
   fs = require('fs'),
   bump = require('gulp-bump');
 
+var execSync = require('child_process').execSync;
+
+var currentVersion = "0.0.1";
+
+gulp.task('bump-version', function () {
+  return gulp.src('./package.json')
+    .pipe(bump({ type: 'patch' }))
+    .pipe(gulp.dest('./'));
+});
+gulp.task(
+  'rename-branch',
+  function (cb) {
+    const version = getPackageJsonVersion();
+    console.log('running rename branch')
+    execSync("git branch -m release/release-v" + version);
+    return cb();
+  }
+);
+
 
 
 
@@ -40,6 +59,8 @@ gulp.task('branch-status', (cb) => {
 });
 gulp.task('checkout-development', (cb) => {
   git.checkout('development', (err, sts) => {
+    console.log('checkout-development running')
+    console.log(err);
     if (err) return err;
     return cb();
   });
@@ -53,15 +74,14 @@ gulp.task('pull-development', (cb) => {
 
 gulp.task('commit-changes', (cb) => {
   return gulp.src('./')
-    .pipe(git.add({args:'--all'}))
-    .pipe(git.commit("release branch", {emitData:true}))
-    .on('data',function(data) {
+    .pipe(git.add({ args: '--all' }))
+    .pipe(git.commit("release branch", { emitData: true }))
+    .on('data', function (data) {
       console.log(data);
     });
 })
 gulp.task('checkout-release', (cb) => {
-  let json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-  let version = json.version
+  const version = getPackageJsonVersion();
   git.checkout('release/release-v' + version, { args: '-b' }, (err, sts) => {
     if (err) return err;
     return cb();
@@ -77,40 +97,21 @@ gulp.task('push-release', (cb) => {
 gulp.task('finishVersion', function (callback) {
   runSequence('checkout-development',
     'pull-development',
-    'bump-version',
     'checkout-release',
+    'bump-version',
+    'rename-branch',
     'commit-changes',
-    'push-release', function(err){
-      if(err) {console.log(err)}else{
+    'push-release', function (err) {
+      if (err) { console.log(err) } else {
         callback();
       }
     });
 })
 
+function getPackageJsonVersion() {
+  let json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+  return json.version;
+}
 
-// var gulp = require('gulp');
-// var runSequence = require('run-sequence');
-// var git = require('gulp-git');
 
-// var currentVersion = "0.0.1";
 
-// gulp.task('finishVersion', function(callback) { runSequence('doCommit', 'doTag', 'doPush', callback); })
-
-// gulp.task('doCommit', function() {
-//   return gulp.src(['./*', '!./Build', '!./node_modules'])
-//     .pipe(git.commit('Deployment of ' + currentVersion + '.'));
-// });
-
-// gulp.task('doTag', function(cb) {
-//   git.tag(currentVersion, 'Version: ' + currentVersion, function (err) {
-//     if (err) return cb(err);
-//     return cb();
-//   });
-// });
-
-// gulp.task('doPush', function(cb) {
-//   git.push('origin', {args: " --tags"}, function (err) {
-//     if (err) return cb(err);
-//     cb(err);
-//   });
-// });
