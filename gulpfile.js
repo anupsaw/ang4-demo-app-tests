@@ -52,6 +52,7 @@ gulp.task('bump-version', function () {
 
 gulp.task('branch-status', (cb) => {
   git.status({ args: '--porcelain' }, (err, sts) => {
+    console.error(err);
     if (err) return err;
     if (sts) console.error(sts); return;
     return cb();
@@ -67,6 +68,7 @@ gulp.task('checkout-development', (cb) => {
 });
 gulp.task('pull-development', (cb) => {
   git.pull('origin', 'development', (err, sts) => {
+    console.error(err);
     if (err) return err;
     return cb();
   });
@@ -83,12 +85,14 @@ gulp.task('commit-changes', (cb) => {
 gulp.task('checkout-release', (cb) => {
   const version = getPackageJsonVersion();
   git.checkout('release/release-v' + version, { args: '-b' }, (err, sts) => {
+    console.error(err);
     if (err) return err;
     return cb();
   });
 });
 gulp.task('push-release', (cb) => {
   git.push('origin', { args: '--set-upstream' }, (err, sts) => {
+    console.error(err);
     if (err) return err;
     return cb();
   });
