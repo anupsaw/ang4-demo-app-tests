@@ -2,8 +2,24 @@ const gulp = require('gulp'),
   runSequence = require('run-sequence'),
   git = require('gulp-git'),
   fs = require('fs'),
+  open = require('gulp-open');
+
+  util = require('gulp-util'),
+  colors = util.colors;
   bump = require('gulp-bump');
 
+
+
+  gulp.task('util', ()=> {
+   // console.log(util);
+   // util.log(util.colors.strikethrough(['anup']));
+    util.log(colors.blue('my Name is anup'))
+  })
+
+  gulp.task('uri', function(){
+    gulp.src(__filename)
+    .pipe(open({uri: 'http://www.google.com'}));
+  });
 
 
 
@@ -34,7 +50,11 @@ gulp.task('bump-version', function () {
 gulp.task('branch-status', (cb) => {
   git.status({ args: '--porcelain' }, (err, sts) => {
     if (err) return err;
-    if (sts) console.error(sts); return;
+    if (sts) {
+      util.log(colors.red('you have changed files please comitt those changes first \n\n',sts));
+    //  var err = new util.PluginError('test', 'something broke', {showStack: true})
+      util.log(err);
+    }
     return cb();
   });
 });
@@ -44,6 +64,16 @@ gulp.task('checkout-development', (cb) => {
     return cb();
   });
 });
+
+gulp.task('pr', (cb) => {
+  git.pull('upstream' ['development', 'master'], function(err){
+    console.log(err);
+    if (err) return err;
+    return cb();
+  });
+});
+
+
 gulp.task('pull-development', (cb) => {
   git.pull('origin', 'development', (err, sts) => {
     if (err) return err;
