@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataServiceService } from './services/data-service.service';
+import { formConfig } from '../data/form.config';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { DataServiceService } from './services/data-service.service';
 export class AppComponent {
   title = 'app';
   counter: number;
-  data;
+  formConfig = formConfig;
   constructor(private dataService: DataServiceService) {
     this.counter = 0;
   }

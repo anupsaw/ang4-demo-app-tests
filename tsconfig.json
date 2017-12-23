@@ -3,6 +3,8 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "rootDir": ".",
+    "baseUrl":"src",
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -11,6 +13,9 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@aksfw/*": ["aks-fw/*"]
+    },
     "lib": [
       "es2017",
       "dom"

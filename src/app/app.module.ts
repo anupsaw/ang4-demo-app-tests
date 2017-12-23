@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AksAdminModule } from './aks-admin/aks-admin.module';
+import { AksFormsModule } from '@aksfw/forms';
 import { DataServiceService } from './services/data-service.service';
 import { AppComponent } from './app.component';
 import { HighlightDirectiveDirective } from './directives/highlight-directive.directive';
@@ -19,7 +19,7 @@ import 'hammerjs';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-   // AksAdminModule
+    AksFormsModule
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent]
