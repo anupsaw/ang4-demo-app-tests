@@ -9,7 +9,12 @@ export const formConfig: Array<AksFormConfig> = [{
   }
 },
 {
-  control: 'textarea',
-  name: 'foodName',
+  control: 'input',
+  name: 'foodType',
+  type: 'text'
+},
+{
+  control: 'input',
+  name: 'foodTaste',
   type: 'text'
 }];

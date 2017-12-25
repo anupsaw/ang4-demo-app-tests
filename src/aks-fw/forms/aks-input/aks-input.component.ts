@@ -10,6 +10,7 @@ export class AksInputComponent implements OnInit {
 
   controlConfigs: AksFormConfig;
   controlName: FormControl;
+  controlFormGroup: FormGroup;
   constructor() { }
 
   ngOnInit() {

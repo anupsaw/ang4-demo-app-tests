@@ -5,6 +5,7 @@ import { MatInputModule, MatIconModule, MatButtonModule } from '@angular/materia
 import { AksInputComponent } from '../aks-input/aks-input.component';
 import { AksFormsComponent } from './aks-forms.component';
 import { AksDynamicFormsDirective } from './aks-dynamic-forms.directive';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { AksDynamicFormsDirective } from './aks-dynamic-forms.directive';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    FlexLayoutModule
   ],
   declarations: [AksInputComponent, AksFormsComponent, AksDynamicFormsDirective],
   exports: [AksInputComponent, AksFormsComponent],

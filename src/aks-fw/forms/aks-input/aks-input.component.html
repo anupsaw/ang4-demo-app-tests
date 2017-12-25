@@ -1,4 +1,6 @@
-<mat-form-field  class="example-full-width">
-  <input matInput [placeholder]="configs.name" formControlName="controlName"  >
-</mat-form-field>
+
+  <mat-form-field fxFlex class="" [formGroup]="controlFormGroup">
+    <input matInput [placeholder]="controlConfigs?.name" [formControlName]="controlConfigs?.name">
+  </mat-form-field>
+
 

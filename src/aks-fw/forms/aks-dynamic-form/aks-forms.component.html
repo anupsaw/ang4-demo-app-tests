@@ -1,4 +1,4 @@
-<form [formGroup]='dynamicForm' class="example-form">
+<!-- <form [formGroup]='dynamicForm' class="example-form">
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Favorite food" formControlName="foodName" >
     </mat-form-field>
@@ -9,9 +9,20 @@
 
   </form>
   <button matButton (click)="showFormData()"> Submit</button>
-  <h1>test</h1>
+  <h1>test</h1> -->
 
 
-  <aks-input [configs] ='inputConfig'> </aks-input>
+<!-- <aks-input [configs] ='inputConfig'> </aks-input> -->
 
-  <!-- <div  [configs] ='formConfig'></div> -->
+<!-- <div  [configs] ='formConfig'></div> -->
+
+<form [formGroup]='dynamicForm'>
+  <div fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="start"
+  fxLayoutGap="30px"
+  fxLayoutGap.xs="0">
+    <ng-template #controls aksDynamicControl [elementConfigs]="formConfig" [formGroup]="dynamicForm"></ng-template>
+  <h1>It should work</h1>
+  </div>
+</form>

@@ -1,4 +1,6 @@
 
+import { AksElementType } from '../componentService/aks-forms-component.service';
+
 
 export interface AksFormConfig {
 
