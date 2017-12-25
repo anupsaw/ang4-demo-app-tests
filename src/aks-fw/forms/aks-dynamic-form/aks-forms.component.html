@@ -16,13 +16,11 @@
 
 <!-- <div  [configs] ='formConfig'></div> -->
 
-<form [formGroup]='dynamicForm'>
-  <div fxLayout="row wrap"
-  fxLayout.xs="column"
-  fxLayoutAlign="start"
-  fxLayoutGap="30px"
-  fxLayoutGap.xs="0">
-    <ng-template #controls aksDynamicControl [elementConfigs]="formConfig" [formGroup]="dynamicForm"></ng-template>
-  <h1>It should work</h1>
+<form [formGroup]='formGroup'>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutGap="30px" fxLayoutGap.xs="0">
+    <!-- <ng-template #controls aksDynamicControl [elementConfigs]="formConfig" [formGroup]="dynamicForm"
+    [attachEvent] ="attachEvent" (controlClick)="onControlClick($event)"></ng-template> -->
+
+    <ng-template #controls></ng-template>
   </div>
 </form>

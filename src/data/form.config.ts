@@ -1,6 +1,6 @@
-import { AksFormConfig } from '@aksfw/forms';
+import { IAksFormConfig } from '@aksfw/forms';
 
-export const formConfig: Array<AksFormConfig> = [{
+export const formConfig: Array<IAksFormConfig> = [{
   control: 'input',
   name: 'foodName',
   type: 'text',

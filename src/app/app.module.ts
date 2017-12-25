@@ -4,8 +4,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import { AksFormsModule } from '@aksfw/forms';
+import { AksAdminModule } from '@aksfw/admin';
 import { DataServiceService } from './services/data-service.service';
 import { AppComponent } from './app.component';
+
 import { HighlightDirectiveDirective } from './directives/highlight-directive.directive';
 
 import 'hammerjs';
@@ -20,6 +22,7 @@ import 'hammerjs';
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
+    AksAdminModule,
     AksFormsModule
   ],
   providers: [DataServiceService],

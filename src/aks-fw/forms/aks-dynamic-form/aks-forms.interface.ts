@@ -2,15 +2,16 @@
 import { AksElementType } from '../componentService/aks-forms-component.service';
 
 
-export interface AksFormConfig {
+export interface IAksFormConfig {
 
   control: string;
   name: string;
   type: string;
-  validations?: AksValidations;
+  disabled?: boolean;
+  validations?: IAksValidations;
 }
 
-export interface AksValidations {
+export interface IAksValidations {
   required?: boolean;
 }
 
