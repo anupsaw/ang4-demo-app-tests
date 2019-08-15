@@ -1,0 +1,26 @@
+<!-- <form [formGroup]='dynamicForm' class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" formControlName="foodName" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+
+  </form>
+  <button matButton (click)="showFormData()"> Submit</button>
+  <h1>test</h1> -->
+
+
+<!-- <aks-input [configs] ='inputConfig'> </aks-input> -->
+
+<!-- <div  [configs] ='formConfig'></div> -->
+
+<form [formGroup]='formGroup'>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutGap="30px" fxLayoutGap.xs="0">
+    <!-- <ng-template #controls aksDynamicControl [elementConfigs]="formConfig" [formGroup]="dynamicForm"
+    [attachEvent] ="attachEvent" (controlClick)="onControlClick($event)"></ng-template> -->
+
+    <ng-template #controls></ng-template>
+  </div>
+</form>

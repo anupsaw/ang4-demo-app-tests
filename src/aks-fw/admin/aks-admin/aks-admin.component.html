@@ -1,0 +1,52 @@
+<div fxLayout="column" class="aks-container">
+  <mat-toolbar fxLayout="row wrap" color="primary" class="aks-toolbar">
+    <button mat-icon-button><mat-icon>menu</mat-icon></button>
+    <h1 class="aks-app-name">Responsive App</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxLayout="row wrap" class="aks-container">
+    <mat-sidenav class="aks-left-sidenav" #sidenavLeft mode="side" opened="true">
+      <p><button mat-button (click)="sidenavLeft.toggle()">Toggle</button></p>
+      <p>
+        Testing side nav
+      </p>
+    </mat-sidenav>
+    <mat-sidenav class="aks-right-sidenav" align="end" #sidenavRight mode="side">
+      <div style="margin: 10px">
+        <ng-container *ngIf="reload">
+          <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
+            <button mat-icon-button (click)="editAll()">
+                  <mat-icon aria-label="close icon" matTooltip="edit all">edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="save()">
+                    <mat-icon aria-label="close icon" matTooltip="reset to original">restore</mat-icon>
+                  </button>
+            <button mat-icon-button (click)="save()">
+                    <mat-icon aria-label="close icon" matTooltip="save">save</mat-icon>
+                  </button>
+            <button mat-icon-button (click)="sidenavRight.toggle()">
+                  <mat-icon aria-label="close icon" matTooltip="close">close</mat-icon>
+                </button>
+          </div>
+          <div>{{fieldName}}</div>
+          <aks-forms #propertyConfigForm [formConfig]="elementProperties" [formData]="elementData"></aks-forms>
+        </ng-container>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <p><button mat-button (click)="sidenavRight.toggle()">Toggle</button></p>
+      <p><button mat-button (click)="sidenavLeft.toggle()">Toggle</button></p>
+      <p>
+        Loving Angular material
+      </p>
+      <aks-forms #designForm [formConfig]="formConfig" (controlClick)="onControlClicked($event)" [attachEvent]="'true'"></aks-forms>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
